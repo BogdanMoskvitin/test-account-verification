@@ -1,29 +1,46 @@
 <div class="account">
     <form [formGroup]="accountForm" novalidate (ngSubmit)="submit()">
-        <div class="account__box">
-            <label for="bik" class="account__label">БИК</label>
-            <input type="text" name="bik" formControlName="bik" 
-                class="account__input" value="11111111" 
-                (click)="clickInput()">
+        <div formArrayName="account">
+            <div *ngFor="let account of getFormsControls()['controls']; let i = index">
+                <div class="account__flex">
+                    <p class="account__index">{{i+1}}.</p>
+                    <button class="account__btn_delete" *ngIf="i != 0" type="button" (click)="deleteAccount(i)">X</button>
+                </div>
+
+                <div [formGroupName]="i">
+                    <div class="account__box">
+                        <label for="bik" class="account__label">БИК</label>
+                        <input type="text" name="bik" formControlName="bik" 
+                            class="account__input" (click)="clickInput()">
+                    </div>
+                    <p class="account__status">
+                        {{getErrorMessageBik(i)}}
+                    </p>
+                    <div class="account__box">
+                        <label for="account" class="account__label">Расчетный счёт</label>
+                        <input type="text" name="account" formControlName="account" 
+                            class="account__input" (click)="clickInput()">
+                    </div>
+                    <p class="account__status">
+                        {{getErrorMessageAccount(i)}}
+                    </p>
+
+                    <p class="account__status" *ngIf="status[i] == 1" 
+                        style="color: green">
+                        Счет указан корректно
+                    </p>
+                    <p class="account__status" *ngIf="status[i] == 2"
+                        style="color: red">
+                        Указан неверный номер счета
+                    </p>
+                </div>
+            </div>
         </div>
-        <p class="account__status" 
-            *ngIf="accountForm.controls['bik'].invalid && accountForm.controls['bik'].touched">
-            Указан неверный номер БИК!
-        </p>
-        <div class="account__box">
-            <label for="account" class="account__label">Расчетный счёт</label>
-            <input type="text" name="account" formControlName="account" 
-                class="account__input" value="11111111" 
-                (click)="clickInput()">
-        </div>
-        <p class="account__status" 
-            [style.color]="message.color">
-            {{message.value}}
-        </p>
-        <p class="account__status" 
-            *ngIf="accountForm.controls['account'].invalid && accountForm.controls['account'].touched">
-            Указан неверный номер счета!
-        </p>
+
+        <button class="account__btn_add" type="button" (click)="addAccount()" 
+            *ngIf="isAddAccount < 3">Добавить счет
+        </button>
+
         <div class="account__checkbox">
             <input type="checkbox" name="terms" formControlName="terms" 
                 class="account__checkbox_input" 
