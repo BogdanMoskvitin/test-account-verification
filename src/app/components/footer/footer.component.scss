@@ -1,0 +1,28 @@
+.footer {
+    background: #F5F7F8;
+    
+    &__content {
+        padding: 28px 18px;
+
+        &_title {
+            font-weight: 700;
+            font-size: 14px;
+            color: #3A444E;
+            margin-bottom: 4px;
+        }
+    
+        &_subtitle {
+            font-weight: 400;
+            font-size: 12px;
+            color: #3A444E;
+            margin-bottom: 16px;
+        }
+    
+        &_rights {
+            font-weight: 400;
+            font-size: 14px;
+            color: #3A444E;
+            margin-top: 28px;
+        }
+    }
+}

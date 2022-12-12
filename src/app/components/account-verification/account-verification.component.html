@@ -1,0 +1,25 @@
+<div class="account">
+    <p class="account__title">Проверка счета</p>
+
+    <div class="account__container">
+        <div class="account__container_btns">
+            <button class="account__container_btn" 
+                [ngClass]="{'account__container_btn-active' : currentTab == DrawerTab.AboutService}" 
+                (click)="changeTab(DrawerTab.AboutService)">
+                О сервисе
+            </button>
+            <button class="account__container_btn" 
+                [ngClass]="{'account__container_btn-active' : currentTab == DrawerTab.CheckAccount}" 
+                (click)="changeTab(DrawerTab.CheckAccount)">
+                Проверить счет
+            </button>
+        </div>
+
+        <app-about-service 
+            *ngIf="currentTab == DrawerTab.AboutService">
+        </app-about-service>
+        <app-check-account 
+            *ngIf="currentTab == DrawerTab.CheckAccount">
+        </app-check-account>
+    </div>
+</div>

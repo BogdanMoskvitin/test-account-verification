@@ -1,0 +1,43 @@
+<div class="account">
+    <form [formGroup]="accountForm" novalidate (ngSubmit)="submit()">
+        <div class="account__box">
+            <label for="bik" class="account__label">БИК</label>
+            <input type="text" name="bik" formControlName="bik" 
+                class="account__input" value="11111111" 
+                (click)="clickInput()">
+        </div>
+        <p class="account__status" 
+            *ngIf="accountForm.controls['bik'].invalid && accountForm.controls['bik'].touched">
+            Указан неверный номер БИК!
+        </p>
+        <div class="account__box">
+            <label for="account" class="account__label">Расчетный счёт</label>
+            <input type="text" name="account" formControlName="account" 
+                class="account__input" value="11111111" 
+                (click)="clickInput()">
+        </div>
+        <p class="account__status" 
+            [style.color]="message.color">
+            {{message.value}}
+        </p>
+        <p class="account__status" 
+            *ngIf="accountForm.controls['account'].invalid && accountForm.controls['account'].touched">
+            Указан неверный номер счета!
+        </p>
+        <div class="account__checkbox">
+            <input type="checkbox" name="terms" formControlName="terms" 
+                class="account__checkbox_input" 
+                (click)="clickInput()">
+            <label for="terms" class="account__checkbox_label">
+                Согласен с <a (click)="openTerms()">условиями</a>
+            </label> 
+        </div>
+       
+        <div class="account__submit_box">
+            <input type="submit" class="account__submit" value="Проверить" 
+                [disabled]="accountForm.invalid">
+        </div>
+    </form>
+</div>
+
+<app-terms *ngIf="isTerms" (onAgree)="onAgree($event)"></app-terms>

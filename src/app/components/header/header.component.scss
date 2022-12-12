@@ -1,0 +1,33 @@
+.header {
+    height: 50px;
+    border-bottom: 1px solid #D0D5DB;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 18px;
+
+    &__logo {
+        width: 60px;
+        height: 20px;
+    }
+
+    &__burger {
+        height: 15.6px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+
+        &_line {
+            width: 26px;
+            height: 1.6px;
+            background: #C4C4C4;
+        }
+
+        &_line-mid {
+            width: 19px;
+            height: 1.6px;
+            background: #C4C4C4;
+        }
+    }
+}

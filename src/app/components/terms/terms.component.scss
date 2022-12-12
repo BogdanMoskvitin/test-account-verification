@@ -1,0 +1,31 @@
+.bg {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.terms {
+    padding: 20px;
+    background: #FFFFFF;
+    margin: 100px 50px 0;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.08);
+    border-radius: 15px;
+
+    &__box_btn {
+        display: flex;
+        justify-content: end;
+    }
+    
+    &__btn {
+        padding: 10px 25px;
+        border: none;
+        background: #00B1AB;
+        border-radius: 100px;
+        font-weight: 700;
+        font-size: 12px;
+        color: #FFFFFF;
+        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+        margin-top: 10px;
+    }
+}
